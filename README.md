@@ -52,7 +52,7 @@ Traditional equity auctions operate on fixed schedules (Monday–Friday), while 
 
 ---
 
-## 🔬 Core Progress Report: Day 1 & Day 2 Implementations
+## 🔬 Core Progress Report: Day 1 Implementations
 
 ### 1. 🧮 Mathematical Foundations & Vector Processing (Day 1)
 Simple arithmetic returns fail across multi-period horizons because they are non-additive. To guarantee vertical and horizontal temporal additivity across both traditional equity breaks and continuous digital pipelines, the raw price inputs are converted into logarithmic return vectors:
@@ -63,10 +63,6 @@ Annualized realized volatility is calculated as the rolling standard deviation (
 
 $$\sigma_{\text{annualized}} = \sqrt{\frac{252}{n-1}\sum_{i=1}^{n}\left(R_i - \bar{R}\right)^2}$$
 
-### 2. 📊 Graphics Infrastructure & Risk Distributions (Day 2)
-Using `02_core_visualizations.ipynb`, the engine reads the cached data matrix and sets up dynamic visual monitors:
-* **📈 Visual 1 & 2 (Line & Area Mix):** Combines standard closing lines with translucent `fillcolor` bands to highlight asset breakouts relative to calculated upper and lower Bollinger variance limits.
-* **📉 Visual 3 & 4 (Statistical Distributions):** Uses automated frequency bins via `plotly` to analyze distribution profiles, alongside structural bar charts tracking trading activity across different days of the week.
 
 ---
 
