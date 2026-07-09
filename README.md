@@ -1,12 +1,11 @@
-# 🌌 CryptoStock_Oracle: Data Science Research Report (Day 2 Milestone)
+# 🌌 CryptoStock_Oracle: *Data Science & Self-Taught ML Research Engine*
 
 [![Python Version](https://img.shields.io/badge/Python-3.9+-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org)
-[![Interactive Canvas](https://img.shields.io/badge/Engine-Plotly-orange.svg?style=for-the-badge&logo=plotly)](https://plotly.com)
-[![UI Prototyping](https://img.shields.io/badge/UI-Streamlit_Ready-FF4B4B.svg?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io)
+[![Interactive Frontend](https://img.shields.io/badge/UI-Streamlit-FF4B4B.svg?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io)
 
-An interactive financial data science pipeline constructed to extract, analyze, and map time-series anomalies across traditional stock markets and cryptocurrency networks. 🏦 📈
+An end-to-end financial data engine that harvests asset records using a pure Python data science stack. While built using core course tools, this engine includes an advanced self-taught Machine Learning modeling layout learned via external channels to maximize analytical value.
 
-This repository documents the active progress of the **45-Day Summer Industrial Training (4th Semester, 2026)**. 🎓
+Developed as a capstone project for the **45-Day Summer Industrial Data Science Training**.
 
 ---
 
@@ -18,13 +17,15 @@ Traditional equity auctions operate on fixed schedules (Monday–Friday), while 
 1. **📡 Financial Vectorization:** Learning to extract and transform live raw records using a focused Python data science stack rather than pre-cleaned static datasets.
 2. **🎨 Interactive Graphic Design:** Moving away from static flat charts into responsive visual matrix pipelines using Plotly and custom UI layouts.
 3. **✨ Glassmorphic Presentation Interface:** Preparing a premium interface by combining Streamlit with custom HTML5/CSS3 frosted-glass components.
+   
+---
+
+### 🎯Core Project Goals:
+1. **📡 Core Curricular Competency:** Implementing time-lag loops, array indexing, and vector calculations using core university tools.
+2. **🎨 Independent Self-Learning:** Venturing beyond class limits by learning predictive modeling pipelines independently to add value to the system.
+3. **✨ Interactive Delivery:** Packaging clean underlying operations into a user-facing dashboard app.
 
 ---
-### Core Focus Areas:
-1. **🧠 Financial Vectorization:** Learning to extract and transform live raw records using a focused Python data science stack rather than pre-cleaned static datasets.
-2. **📡 Interactive Graphic Design:** Moving away from static flat charts into responsive visual matrix pipelines using Plotly and custom UI layers.
-3. **🔢 Glassmorphic Presentation Interface:** Preparing a premium interface by combining Streamlit with custom CSS/HTML frosted-glass components.
-
 ---
 ## 📅 Table 1: Complete 45-Day Academic Syllabus Breakdown (Week-Wise)
 *This table represents the core curriculum taught during the industrial training course.* 📝
