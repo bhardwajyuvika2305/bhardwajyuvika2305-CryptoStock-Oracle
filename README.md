@@ -18,7 +18,12 @@ Traditional stock markets operate on fixed business calendars (Monday–Friday),
 3. **Interactive Delivery:** Packaging clean underlying operations into a user-facing dashboard app.
 
 ---
+### Core Focus Areas:
+1. **Financial Vectorization:** Learning to extract and transform live raw records using a focused Python data science stack rather than pre-cleaned static datasets.
+2. **Interactive Graphic Design:** Moving away from static flat charts into responsive visual matrix pipelines using Plotly and custom UI layers.
+3. **Glassmorphic Presentation Interface:** Preparing a premium interface by combining Streamlit with custom CSS/HTML frosted-glass components.
 
+---
 ## 📅 Table 1: Official 45-Day Academic Syllabus Breakdown (Week-Wise)
 *This table represents the core curriculum taught during the industrial training course.*
 
@@ -41,11 +46,6 @@ Traditional stock markets operate on fixed business calendars (Monday–Friday),
 | :--- | :--- | :--- | :--- | :--- |
 | **Day 1** | `01_data_ingestion.ipynb` | **Course Syllabus** | Set up configuration metrics, initialized the repo, and wrote the retrieval script using `yfinance` and `datetime`. | ✅ **Completed** |
 | **Day 2** | `02_core_visualizations.ipynb` | **Course Syllabus** | Extracted the saved data to construct dynamic trend channels, rolling Bollinger Bands, and distribution histograms via `plotly`. | 🔄 *Next Phase* |
-| **Day 3** | `03_advanced_topologies.ipynb` | **Course Syllabus** | Designed advanced graphical spaces including co-variance attribute heatmaps and interactive 3D phase-space scatter systems. | 🔄 *Next Phase* |
-| **Day 4** | `src/features.py` | **Course Syllabus** | (Upcoming) Engineering look-back shifts ($T-N$ historical horizons) and parsing trading day strings using `pandas`. | 🔄 *Next Phase* |
-| **Day 5** | `src/model.py` | 🌟 **Self-Taught Add-on** | (Upcoming) Building an independent predictive engine using Ensemble Regressors to compute trend projections. | 🔄 *Next Phase* |
-| **Day 6** | `app.py` (Streamlit View) | **Course Syllabus** | (Upcoming) Wrapping the complete logic and self-taught calculations into an interactive, multi-page web dashboard. | 🔄 *Next Phase* |
-| **Day 7** | Live Server Deployment | **Course Syllabus** | (Upcoming) Generating configuration records (`requirements.txt`) and publishing the final app to Streamlit Cloud. | 🔄 *Next Phase* |
 
 ---
 
