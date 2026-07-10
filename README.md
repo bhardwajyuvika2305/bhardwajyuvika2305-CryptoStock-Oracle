@@ -84,7 +84,6 @@ The framework limits its environment configurations exclusively to these standar
 
 * **In Quantitative Finance:** Deeply understood variance clustering, logarithmic returns, and how trading calendar gaps impact historical calculations across asset classes.
 * **In Self-Directed Engineering:** Learned how to independently source, read, and implement advanced programming methods (like predictive models) outside the standard classroom syllabus to enhance my project.
-## ⚙️ How to Initialize and Run the Day 2 Snapshot
 
 ---
 1. **📥 Clone the repository:**
