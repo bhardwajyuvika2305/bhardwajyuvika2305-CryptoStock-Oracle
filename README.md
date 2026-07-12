@@ -26,19 +26,21 @@ This project bridges this data gap by building a unified mathematical canvas tha
 ---
 
 ### 💹 Market Analysis Visualizations
-<img src="<img width="300" height="200" alt="Screenshot 2026-07-12 214438" src="https://github.com/user-attachments/assets/1f6d18b3-1ba1-4073-a03e-1def07bc8bd6"/>
+<p align="center">
+  <a>
+  <img width="400" height="280" alt="Screenshot 2026-07-12 214438" src="https://github.com/user-attachments/assets/1f6d18b3-1ba1-4073-a03e-1def07bc8bd6"/>
   </a>
-  <a href="<img width="300" height="200" alt="Screenshot 2026-07-12 214328" src="https://github.com/user-attachments/assets/51d96a81-32da-478e-b170-4787bfcc40fb"/>
-    <img src="<img width="300" height="200" alt="Screenshot 2026-07-12 214328" src="https://github.com/user-attachments/assets/475be448-ed19-4997-b356-877b59a5409a"/>
+  <a>
+ <img width="400" height="280" alt="Screenshot 2026-07-12 214328" src="https://github.com/user-attachments/assets/51d96a81-32da-478e-b170-4787bfcc40fb"/>
   </a>
 </p>
 
 <p align="center">
-  <a href="images/chart3.png">
-    <img src="images/chart3.png" width="200">
-  </a>
-  <a href="img  "width="200" 
-    <img src="images/chart4.png" width="200">
+  <a>
+ <img width="400" height="280" alt="Screenshot 2026-07-12 214226" src="https://github.com/user-attachments/assets/1e79d84c-2d7a-4ce7-89b3-7bf2e404a2fa"/>
+</a>
+  <a>
+    <img width="400" height="280" alt="image" src="https://github.com/user-attachments/assets/b2782bb7-c286-4123-84ea-f5e559eef282"/>
   </a>
 </p>
 
