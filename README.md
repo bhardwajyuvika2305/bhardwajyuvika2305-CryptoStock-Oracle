@@ -26,6 +26,7 @@ This project bridges this data gap by building a unified mathematical canvas tha
 ---
 
 ### 💹 Market Analysis Visualizations
+
 <p align="center">
   <a>
   <img width="400" height="280" alt="Screenshot 2026-07-12 214438" src="https://github.com/user-attachments/assets/1f6d18b3-1ba1-4073-a03e-1def07bc8bd6"/>
@@ -40,13 +41,13 @@ This project bridges this data gap by building a unified mathematical canvas tha
  <img width="400" height="280" alt="Screenshot 2026-07-12 214226" src="https://github.com/user-attachments/assets/1e79d84c-2d7a-4ce7-89b3-7bf2e404a2fa"/>
 </a>
   <a>
-    <img width="400" height="280" alt="image" src="https://github.com/user-attachments/assets/b2782bb7-c286-4123-84ea-f5e559eef282"/>
+   <img width="400" height="280" alt="Screenshot 2026-07-12 214210" src="https://github.com/user-attachments/assets/7baae50b-1389-47b0-95c0-d03273c69359" />
   </a>
 </p>
 
 <p align="center">
-  <a href="images/chart5.png">
-    <img src="images/chart5.png" width="200">
+  <img width="580" height="200" alt="image" src="https://github.com/user-attachments/assets/b2782bb7-c286-4123-84ea-f5e559eef282"/>
+ 
   </a>
 </p>
 
