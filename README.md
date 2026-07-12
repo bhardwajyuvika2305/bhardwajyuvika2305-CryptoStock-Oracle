@@ -48,7 +48,8 @@ This project bridges this data gap by building a unified mathematical canvas tha
 | **Day 1** | `01_data_ingestion.ipynb` | **Course Syllabus** | Configured multi-asset ingestion logs. Fetched raw market strings and calculated continuous log returns. | ✅ **Pushed** |
 | **Day 2** | `02_core_visualizations.ipynb` | **Course Syllabus** | Built 8 interactive charts mapping rolling Bollinger variance envelopes and return density distributions. | ✅ **Pushed** |
 | **Day 3** | `03_advanced_topologies.ipynb` | **Course Syllabus** | Created cross-asset Pearson correlation matrices and interactive 3D phase-space continuum charts. | ✅ **Pushed** |
-| **Day 4** | `src/features.py` | **Course Syllabus** | Engineering structural lag fields ($T-N$) and extracting day-of-week volume accumulation layers. | 🔄 *Next Phase* |
+| **Day 4** | `app_day1.py` | **Course Syllabus** | Engineering structural lag fields ($T-N$) and extracting day-of-week volume accumulation layers. | ✅ **Pushed** |
+| **Day 5** | `app_day2.py` | 🌟 *Self-Taught Add-on* | Exploring predictive ensembles via self-taught online materials to calculate future trend directions. | 🔄 Next Action |
 
 ---
 
