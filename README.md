@@ -25,6 +25,31 @@ This project bridges this data gap by building a unified mathematical canvas tha
 
 ---
 
+### 💹 Market Analysis Visualizations
+<img src="<img width="300" height="200" alt="Screenshot 2026-07-12 214438" src="https://github.com/user-attachments/assets/1f6d18b3-1ba1-4073-a03e-1def07bc8bd6"/>
+  </a>
+  <a href="<img width="300" height="200" alt="Screenshot 2026-07-12 214328" src="https://github.com/user-attachments/assets/51d96a81-32da-478e-b170-4787bfcc40fb"/>
+    <img src="<img width="300" height="200" alt="Screenshot 2026-07-12 214328" src="https://github.com/user-attachments/assets/475be448-ed19-4997-b356-877b59a5409a"/>
+  </a>
+</p>
+
+<p align="center">
+  <a href="images/chart3.png">
+    <img src="images/chart3.png" width="200">
+  </a>
+  <a href="img  "width="200" 
+    <img src="images/chart4.png" width="200">
+  </a>
+</p>
+
+<p align="center">
+  <a href="images/chart5.png">
+    <img src="images/chart5.png" width="200">
+  </a>
+</p>
+
+---
+
 ## 📅 Table 1: Official 45-Day Academic Syllabus Matrix
 *This structural roadmap outlines the core computational skills taught during the official training curriculum.*
 
