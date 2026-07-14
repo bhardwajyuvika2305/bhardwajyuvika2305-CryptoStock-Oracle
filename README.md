@@ -24,6 +24,12 @@ This project bridges this data gap by building a unified mathematical canvas tha
 * ⚡ **Interactive Delivery:** Packaging complex raw math matrices into a fluid, user-facing web interface.
 
 ---
+# 🚀 CryptoStock-Oracle Terminal
+
+## 🔗 Live Demo
+Aap meri live application ko yahan dekh sakte hain: **[Click Here to View Live App](https://cryptostock-oracle.streamlit.app)**
+
+---
 
 ### 💹 Market Analysis Visualizations
 
