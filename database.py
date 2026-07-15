@@ -1,103 +1,78 @@
 import sqlite3
-import pandas as pd
+from datetime import datetime
 
-DB_FILE = "oracle_storage.db"
+DB_FILE = "cryptostock_oracle.db"
 
 def init_database():
-    """Initializes unified local relational storage safely."""
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
-    
-    # 1. Users Table
+    # Create Users table
     cursor.execute("""
-        CREATE TABLE IF NOT EXISTS users (
-            username TEXT PRIMARY KEY,
-            email TEXT,
-            password TEXT,
-            tier TEXT
-        )
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT UNIQUE NOT NULL,
+        email TEXT NOT NULL,
+        password TEXT NOT NULL,
+        tier TEXT NOT NULL
+    )
     """)
-    
-    # 2. Query Logs Table
+    # Create Feedback table
     cursor.execute("""
-        CREATE TABLE IF NOT EXISTS query_logs (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-            ticker TEXT,
-            lookback INTEGER,
-            last_close REAL
-        )
+    CREATE TABLE IF NOT EXISTS feedback (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT NOT NULL,
+        satisfied TEXT NOT NULL,
+        comment TEXT NOT NULL,
+        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
     """)
-    
-    # 3. Feedback Table
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS feedback (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-            user TEXT,
-            satisfied TEXT,
-            comment TEXT
-        )
-    """)
-    
     conn.commit()
     conn.close()
 
-def log_terminal_query(ticker, lookback, last_close):
-    """Safely logs market queries using parameterized queries to prevent SQL Injection."""
-    conn = sqlite3.connect(DB_FILE)
-    cursor = conn.cursor()
-    cursor.execute("""
-        INSERT INTO query_logs (ticker, lookback, last_close)
-        VALUES (?, ?, ?)
-    """, (ticker, lookback, last_close))
-    conn.commit()
-    conn.close()
-
-def insert_user(username, email, hashed_password, tier):
-    """Safely registers a new user node."""
-    conn = sqlite3.connect(DB_FILE)
-    cursor = conn.cursor()
+def insert_user(username, email, password_hash, tier):
     try:
-        cursor.execute("SELECT username FROM users WHERE username = ?", (username,))
-        if cursor.fetchone():
-            return False, "Username already exists!"
-        
-        cursor.execute("""
-            INSERT INTO users (username, email, password, tier) 
-            VALUES (?, ?, ?, ?)
-        """, (username, email, hashed_password, tier))
+        conn = sqlite3.connect(DB_FILE)
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO users (username, email, password, tier) VALUES (?, ?, ?, ?)", 
+                       (username, email, password_hash, tier))
         conn.commit()
-        return True, "Success"
-    except sqlite3.Error as e:
-        return False, str(e)
-    finally:
         conn.close()
+        return True, "User registered successfully."
+    except sqlite3.IntegrityError:
+        return False, "Username already exists."
 
-def insert_feedback(user, satisfied, comment):
-    """Safely inserts trader reviews."""
+def get_user(username):
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
+    cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
+    row = cursor.fetchone()
+    conn.close()
+    return row
+
+def get_all_users():
+    conn = sqlite3.connect(DB_FILE)
+    cursor = conn.cursor()
+    cursor.execute("SELECT id, username, email, password, tier FROM users")
+    rows = cursor.fetchall()
+    conn.close()
+    return rows
+
+def insert_feedback(username, satisfied, comment):
     try:
-        cursor.execute("""
-            INSERT INTO feedback (user, satisfied, comment)
-            VALUES (?, ?, ?)
-        """, (user, satisfied, comment))
+        conn = sqlite3.connect(DB_FILE)
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO feedback (username, satisfied, comment) VALUES (?, ?, ?)", 
+                       (username, satisfied, comment))
         conn.commit()
+        conn.close()
         return True
-    except sqlite3.Error:
+    except Exception:
         return False
-    finally:
-        conn.close()
 
 def get_feedback_records():
-    """Retrieves all feedback records."""
     conn = sqlite3.connect(DB_FILE)
-    try:
-        cursor = conn.cursor()
-        cursor.execute("SELECT user, satisfied, comment, timestamp FROM feedback ORDER BY id DESC")
-        return cursor.fetchall()
-    except sqlite3.Error:
-        return []
-    finally:
-        conn.close()
+    cursor = conn.cursor()
+    cursor.execute("SELECT username, satisfied, comment, timestamp FROM feedback ORDER BY timestamp DESC")
+    rows = cursor.fetchall()
+    conn.close()
+    return rows

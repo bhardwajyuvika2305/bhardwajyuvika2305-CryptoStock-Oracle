@@ -1,0 +1,14 @@
+# Private Configuration and Passwords
+secrets.toml
+.streamlit/secrets.toml
+
+# Local Databases (Contains user data)
+oracle_storage.db
+*.db
+*.db-journal
+
+# Python Cache & Virtual Environments
+venv/
+.env
+__pycache__/
+*.pyc
