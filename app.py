@@ -15,7 +15,7 @@ import scipy.stats as stats
 
 # Import secure database module
 try:
-    import database as db
+    import database1 as db
 except ImportError:
     st.error("Database module (database.py) not found. Please place it in the same directory.")
 
