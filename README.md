@@ -27,7 +27,7 @@ This project bridges this data gap by building a unified mathematical canvas tha
 # 🚀 CryptoStock-Oracle Terminal
 
 ## 🔗 Live Demo
-Aap meri live application ko yahan dekh sakte hain: **[Click Here to View Live App](https://cryptostock-oracle.streamlit.app)**
+Live Application: **[Click Here to View Live App](https://cryptostock-oracle.streamlit.app)**
 
 ---
 
