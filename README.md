@@ -24,6 +24,12 @@ This project bridges this data gap by building a unified mathematical canvas tha
 * ⚡ **Interactive Delivery:** Packaging complex raw math matrices into a fluid, user-facing web interface.
 
 ---
+# 🚀 CryptoStock-Oracle Terminal
+
+## 🔗 Live Demo
+Live Application: **[Click Here to View Live App](https://cryptostock-oracle.streamlit.app)**
+
+---
 
 ### 💹 Market Analysis Visualizations
 
@@ -77,7 +83,7 @@ This project bridges this data gap by building a unified mathematical canvas tha
 | **Day 2** | `02_core_visualizations.ipynb` | **Course Syllabus** | Built 8 interactive charts mapping rolling Bollinger variance envelopes and return density distributions. | ✅ **Pushed** |
 | **Day 3** | `03_advanced_topologies.ipynb` | **Course Syllabus** | Created cross-asset Pearson correlation matrices and interactive 3D phase-space continuum charts. | ✅ **Pushed** |
 | **Day 4** | `app_day1.py` | **Course Syllabus** | Engineering structural lag fields ($T-N$) and extracting day-of-week volume accumulation layers. | ✅ **Pushed** |
-| **Day 5** | `app_day2.py` | 🌟 *Self-Taught Add-on* | Exploring predictive ensembles via self-taught online materials to calculate future trend directions. | 🔄 Next Action |
+| **Day 5** | `app_day2.py` | 🌟 *Self-Taught Add-on* | Exploring predictive ensembles via self-taught online materials to calculate future trend directions. | ✅ **Pushed** |
 
 ---
 
