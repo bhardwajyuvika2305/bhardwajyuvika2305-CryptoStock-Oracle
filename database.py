@@ -1,7 +1,7 @@
 import sqlite3
 from datetime import datetime
 
-DB_FILE = "database.py"
+DB_FILE = "cryptostock-oracle.db"
 
 def init_database():
     conn = sqlite3.connect(DB_FILE)
