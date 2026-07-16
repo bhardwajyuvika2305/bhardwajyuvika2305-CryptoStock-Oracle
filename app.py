@@ -7,6 +7,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import streamlit as st
 import yfinance as yf
+import os
 
 # ==============================================================================
 # 🗄️ DATABASE CONNECTION ENGINE ROUTER
@@ -293,7 +294,9 @@ st.sidebar.metric("System Reputation Score", f"{avg_stars:.1f} / 5.0")
 # 🏁 MAIN DYNAMIC ROUTING ENGINE MATRIX
 # ==============================================================================
 
+# ==============================================================================
 # --- SLIDE 1: INTRO MANIFESTO ---
+# ==============================================================================
 if "1. Project Manifesto" in page_selection:
     st.markdown("<h1 class='glow-text'>🪐 CryptoStock-Oracle Architectural Manifesto</h1>", unsafe_allow_html=True)
     
@@ -308,8 +311,10 @@ if "1. Project Manifesto" in page_selection:
         decentralized asset networks.</p>
     </div>
     """, unsafe_allow_html=True)
-
+    
+# ==============================================================================
 # --- SLIDE 2: DETAILED LIVE CANDLESTICK GRAPH WITH FULL FORM ACCRONYMS ---
+# ==============================================================================
 elif "2. Real-Time Microstructure" in page_selection:
     st.markdown("<h1 class='glow-text'>⚡ Real-Time Multi-Asset Analysis Engine</h1>", unsafe_allow_html=True)
     market_tab, crypto_tab = st.tabs(["🏛️ Traditional Equity Indexes", "⚡ Decentralized Digital Assets"])
@@ -388,8 +393,10 @@ elif "2. Real-Time Microstructure" in page_selection:
             st.plotly_chart(fig_c, use_container_width=True)
         except Exception as e:
             st.error(f"Failed to fetch crypto data: {e}")
-
+            
+# ==============================================================================
 # --- SLIDE 3: MONTE CARLO STOCHASTIC PROJECTIONS ---
+# ==============================================================================
 elif "3. Statistical Risk" in page_selection:
     st.markdown("<h1 class='glow-text'>🔮 Stochastic Prediction & Monte Carlo Matrix</h1>", unsafe_allow_html=True)
     
@@ -451,8 +458,10 @@ elif "3. Statistical Risk" in page_selection:
         """, unsafe_allow_html=True)
     except Exception as e:
         st.error(f"Statistical network error: {e}")
-
+        
+# ==============================================================================
 # --- SLIDE 4: DYNAMIC PORTFOLIO DONUT PLOT ---
+# ==============================================================================
 elif "4. Macro-Sector Distribution" in page_selection:
     st.markdown("<h1 class='glow-text'>🌐 Portfolio Macro-Sector Allocation Analytics</h1>", unsafe_allow_html=True)
     
@@ -478,8 +487,10 @@ elif "4. Macro-Sector Distribution" in page_selection:
             <p>This chart is a standard diversified breakdown map. It shows how much of your overall pool of money is placed into different segments of the economy. Adjusting the sliders changes the color slices instantly to help you visually confirm you are not placing all your eggs into a single sector.</p>
         </div>
         """, unsafe_allow_html=True)
-
+        
+# ==============================================================================
 # --- SLIDE 5: LIQUIDITY SUNBURST PLOT ---
+# ==============================================================================
 elif "5. Exchange Liquidity" in page_selection:
     st.markdown("<h1 class='glow-text'>📊 Multi-Exchange Liquidity Structure Grid</h1>", unsafe_allow_html=True)
     
@@ -498,8 +509,10 @@ elif "5. Exchange Liquidity" in page_selection:
         <p>This ring chart acts as an interactive tree structure. The inner center ring shows total trading activity across the world. Clicking on a slice expands it outward to reveal exactly how much individual trading traffic is held inside specific stock broker exchanges (like Nasdaq or NYSE) versus digital crypto networks (like Coinbase or Binance).</p>
     </div>
     """, unsafe_allow_html=True)
-
+    
+# ==============================================================================
 # --- SLIDE 6: INTER-ASSET CORRELATION MATRIX ---
+# ==============================================================================
 elif "6. Multi-Asset Cross Correlations" in page_selection:
     st.markdown("<h1 class='glow-text'>📈 Inter-Asset Cross Correlation Heatmap</h1>", unsafe_allow_html=True)
     
@@ -533,8 +546,10 @@ elif "6. Multi-Asset Cross Correlations" in page_selection:
         """, unsafe_allow_html=True)
     except Exception as e:
         st.error(f"Failed to generate cross-asset matrix layout: {e}")
-
+        
+# ==============================================================================
 # --- SLIDE 7: MARKOWITZ FRONTIER OPTIMIZATION ---
+# ==============================================================================
 elif "7. High-Performance Markowitz" in page_selection:
     st.markdown("<h1 class='glow-text'>🧮 Markowitz Mean-Variance Efficient Frontier</h1>", unsafe_allow_html=True)
     
@@ -580,8 +595,10 @@ elif "7. High-Performance Markowitz" in page_selection:
             """, unsafe_allow_html=True)
         except Exception as e:
             st.error(f"Efficient Frontier computational failure: {e}")
-
+            
+# ==============================================================================
 # --- SLIDE 8: DUAL-COLUMN SQL FEEDBACK ENGINE ---
+# ==============================================================================
 elif "8. Live Network" in page_selection:
     st.markdown("<h1 class='glow-text'>💬 Quant Terminal Feedback Room</h1>", unsafe_allow_html=True)
     
@@ -600,29 +617,35 @@ elif "8. Live Network" in page_selection:
         db_feedback = get_feedback()
         for row in db_feedback[:5]:
             st.markdown(f"<div class='glass-card'><b>👤 {row[0]}</b> <small style='color:#6366f1;'>{row[3]}</small><p>{row[2]}</p></div>", unsafe_allow_html=True)
-
+            
+# ==============================================================================
 # --- SLIDE 9: CORE INTEGRATED DATABASE VIEWPORT PANEL ---
+# ==============================================================================
 elif "9. Root Admin Audit" in page_selection:
     st.markdown("<h1 class='glow-text'>🔑 Oracle Terminal - Master Admin Directory</h1>", unsafe_allow_html=True)
     st.caption("Authorized Node Operations Only")
     
     password_input = st.text_input("Enter Root Master Password", type="password")
 
-    if password_input == "oracleadmin2026":
-        st.success("Root identity cleared! Extracting master user databases...")
-        from database import get_all_users
-        users_data = get_all_users()
-        
-        if users_data:
-            df_users = pd.DataFrame(users_data, columns=["Database ID", "Username", "Email Address", "Hashed Password", "Account Access Tier"])
-            st.dataframe(df_users, use_container_width=True)
-            st.metric("Total Provisioned Users", len(df_users))
-        else:
-            st.info("No system nodes registered in database currently.")
-    else:
-        if password_input != "":
-            st.error("Access Denied: Admin verification pending.")
+    # Python grabs the secret from the computer's background environment
+    # If it can't find it, it defaults to "fallback_secure_pass"
+    correct_password = os.getenv("TERMINAL_ADMIN_PASS", "fallback_secure_pass")
 
+    if password_input != "":
+        if password_input == correct_password:
+            st.success("Root identity cleared! Extracting master user databases...")
+            from database import get_all_users
+            users_data = get_all_users()
+            
+            if users_data:
+                df_users = pd.DataFrame(users_data, columns=["Database ID", "Username", "Email Address", "Hashed Password", "Account Access Tier"])
+                st.dataframe(df_users, use_container_width=True)
+                st.metric("Total Provisioned Users", len(df_users))
+            else:
+                st.info("No system nodes registered in database currently.")
+        else:
+            st.error("Access Denied: Admin verification failed.")
+            
 # ==============================================================================
 # 🛰️ SLIDE 10: ARCHITECT NODE (YUVIKA BHARDWAJ PROFILED PORTFOLIO W/ IMAGE)
 # ==============================================================================
