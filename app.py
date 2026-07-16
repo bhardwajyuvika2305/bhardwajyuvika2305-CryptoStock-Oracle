@@ -31,16 +31,44 @@ st.set_page_config(
 # 🧪 GLASSMORPHISM LAYER INJECTION (CUSTOM CSS/HTML UI GLOW)
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&family=Space+Grotesk:wght@400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap');
+    
+    /* Base App Theme Wrapper */
     .stApp {
         background: linear-gradient(135deg, #0b0f19 0%, #020408 100%) !important;
         font-family: 'Space Grotesk', sans-serif;
     }
+    
+    /* 🧭 Upgraded Sidebar Container layout */
     [data-testid="stSidebar"] {
-        background: rgba(11, 15, 25, 0.9) !important;
+        background: rgba(11, 15, 25, 0.95) !important;
         backdrop-filter: blur(12px) !important;
         border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
     }
+
+    /* 🎯 Fix alignment and prevent text truncation/wrapping errors in radio groups */
+    [data-testid="stSidebar"] [data-testid="stWidgetLabel"] p {
+        font-size: 1.1rem !important;
+        font-weight: 600 !important;
+        color: #a855f7 !important;
+    }
+
+    /* Target the text options inside the radio button items */
+    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {
+        white-space: nowrap !important;   /* Force labels to stay on a single horizontal line */
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+
+    /* Add hover animations to radio buttons for active user response */
+    div[data-testid="stRadio"] label:hover {
+        background: rgba(255, 255, 255, 0.03) !important;
+        border-radius: 8px !important;
+        transition: all 0.2s ease-in-out;
+    }
+
+    /* Glassmorphism Structural Cards */
     .glass-card {
         background: rgba(255, 255, 255, 0.03) !important;
         backdrop-filter: blur(16px) !important;
@@ -50,11 +78,13 @@ st.markdown("""
         margin-bottom: 25px !important;
         box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
     }
+    
     .glow-text {
         color: #ffffff;
         text-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
         font-weight: 600;
     }
+    
     .stButton>button {
         background: linear-gradient(90deg, #6366f1 0%, #a855f7 100%) !important;
         color: white !important;
@@ -62,7 +92,6 @@ st.markdown("""
         border: none !important;
         font-weight: 600 !important;
         width: 100%;
-        transition: all 0.3s ease;
     }
 </style>
 """, unsafe_allow_html=True)
