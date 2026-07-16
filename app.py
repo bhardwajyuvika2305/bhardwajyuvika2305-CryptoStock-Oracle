@@ -7,12 +7,16 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import streamlit as st
 import yfinance as yf
+from dotenv import load_dotenv
 import os
 
 # ==============================================================================
 # 🗄️ DATABASE CONNECTION ENGINE ROUTER
 # ==============================================================================
 from database import init_db, get_user, insert_user, insert_feedback, get_feedback
+
+# This looks for your local .env file and loads your secrets into memory
+load_dotenv()
 
 # Initialize local secure SQLite backend
 init_db()
