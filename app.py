@@ -3,29 +3,24 @@
 # ==============================================================================
 
 import hashlib
+import datetime as dt
+import numpy as np
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 import streamlit as st
 import yfinance as yf
-import pandas as pd
-import numpy as np
-import datetime as dt
-import plotly.graph_objects as go
-import plotly.express as px
-from plotly.subplots import make_subplots
-import scipy.stats as stats
 
-# Import secure database module
-try:
-    import database1 as db
-except ImportError:
-    st.error("Database module (database.py) not found. Please place it in the same directory.")
+# 🗄️ LINK DIRECTLY TO YOUR NEW DATABASE ENGINE
+from database import init_db, get_user, insert_user, insert_feedback, get_feedback
 
 # Initialize SQL tables on launch
-try:
-    db.init_database()
-except NameError:
-    pass
+init_db()
 
+# ==============================================================================
 # ⚙️ SYSTEM HORIZON CONFIGURATION
+# ==============================================================================
 st.set_page_config(
     page_title="CryptoStock-Oracle Terminal",
     page_icon="🔮",
@@ -163,17 +158,17 @@ if not st.session_state['logged_in']:
     with auth_tab:
         st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
         with st.form("login_form"):
-            login_user = st.text_input("Enter Node ID / Username").strip()
+            username = st.text_input("Enter Node ID / Username").strip()
             login_pass = st.text_input("Security Passkey / Password", type="password")
             submit_login = st.form_submit_button("Authenticate Instance Connection")
             
             if submit_login:
                 hashed_login_pass = hashlib.sha256(login_pass.encode()).hexdigest()
                 # Use DB verify user
-                user_record = db.get_user(login_user)
+                user_record = get_user(username)
                 if user_record and user_record[3] == hashed_login_pass:
                     st.session_state['logged_in'] = True
-                    st.session_state['current_user'] = login_user
+                    st.session_state['current_user'] = username
                     st.success(f"Security node authorized. Initializing connection...")
                     st.rerun()
                 else:
@@ -198,7 +193,7 @@ if not st.session_state['logged_in']:
                     st.error("You must accept execution conditions.")
                 else:
                     hashed_pass = hashlib.sha256(new_pass.encode()).hexdigest()
-                    success, message = db.insert_user(new_user, new_email, hashed_pass, node_tier)
+                    success, message = insert_user(new_user, new_email, hashed_pass, node_tier)
                     if success:
                         st.success("Account created successfully! Proceed to log in.")
                     else:
@@ -653,7 +648,7 @@ elif page_selection == "💬 8. Live Network Feedback Space":
             submit_feed = st.form_submit_button("Log Review Entry")
             
             if submit_feed and comment.strip():
-                if db.insert_feedback(name, satisfied, comment):
+                if insert_feedback(name, satisfied, comment):
                     st.success("Review logged successfully to SQLite!")
                     st.rerun()
                 else:
@@ -662,7 +657,7 @@ elif page_selection == "💬 8. Live Network Feedback Space":
     with list_col:
         st.markdown("<h3 class='glow-text'>📜 Live Network Reviews Feed</h3>", unsafe_allow_html=True)
         
-        db_feedback = db.get_feedback_records()
+        db_feedback = get_feedback()
         
         if not db_feedback:
             # Fallback Placeholders
