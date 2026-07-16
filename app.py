@@ -33,51 +33,60 @@ st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap');
     
-    /* Base App Theme Wrapper */
+    /* 🪐 Global Application Body & Font Architecture */
     .stApp {
         background: linear-gradient(135deg, #0b0f19 0%, #020408 100%) !important;
         font-family: 'Space Grotesk', sans-serif;
     }
     
-    /* 🧭 Upgraded Sidebar Container layout */
+    /* 🧭 Sidebar Core Glassmorphism Layout */
     [data-testid="stSidebar"] {
-        background: rgba(11, 15, 25, 0.95) !important;
-        backdrop-filter: blur(12px) !important;
+        background: rgba(11, 15, 25, 0.96) !important;
+        backdrop-filter: blur(14px) !important;
         border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
     }
 
-    /* 🎯 Fix alignment and prevent text truncation/wrapping errors in radio groups */
+    /* 🎯 CRITICAL FIX: Sidebar Radio Layout Constraint Override */
+    [data-testid="stSidebar"] div[role="radiogroup"] {
+        gap: 6px !important; /* Tightens vertical spacing so option 9 doesn't clip off-screen */
+    }
+
+    /* Force Radio Choices to stay flat and inline without breaking selection alignment */
+    [data-testid="stSidebar"] label[data-testid="stRadioOption"] {
+        display: flex !important;
+        align-items: center !important;
+        padding: 4px 8px !important;
+        margin: 0px !important;
+        width: 100% !important;
+    }
+
+    /* Fix radio button text layout engine */
+    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {
+        white-space: nowrap !important; /* Completely blocks text from jumping to a second line */
+        font-size: 0.88rem !important;  /* Slightly condensed for optimal UI density */
+        font-weight: 400 !important;
+        color: rgba(255, 255, 255, 0.85) !important;
+        margin: 0px !important;
+        padding-left: 4px !important;
+    }
+
+    /* Smooth Cyberpunk Hover Interaction */
+    [data-testid="stSidebar"] label[data-testid="stRadioOption"]:hover {
+        background: rgba(99, 102, 241, 0.08) !important;
+        border-radius: 6px !important;
+        cursor: pointer;
+        transition: background 0.15s ease-in-out;
+    }
+
+    /* Fix Nav Matrix Header styling */
     [data-testid="stSidebar"] [data-testid="stWidgetLabel"] p {
-        font-size: 1.1rem !important;
+        font-size: 1.05rem !important;
         font-weight: 600 !important;
         color: #a855f7 !important;
+        text-shadow: 0 0 8px rgba(168, 85, 247, 0.3);
     }
 
-    /* Target the text options inside the radio button items */
-    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {
-        white-space: nowrap !important;   /* Force labels to stay on a single horizontal line */
-        font-size: 0.95rem !important;
-        line-height: 1.6 !important;
-        color: rgba(255, 255, 255, 0.9) !important;
-    }
-    
-    /* Allow text to break elegantly onto two lines if the screen is narrow, without breaking alignment */
-    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {
-    white-space: normal !important; 
-    word-break: break-word !important;
-    font-size: 0.9rem !important;
-    line-height: 1.4 !important;
-    color: rgba(255, 255, 255, 0.9) !important;
-    }
-
-    /* Add hover animations to radio buttons for active user response */
-    div[data-testid="stRadio"] label:hover {
-        background: rgba(255, 255, 255, 0.03) !important;
-        border-radius: 8px !important;
-        transition: all 0.2s ease-in-out;
-    }
-
-    /* Glassmorphism Structural Cards */
+    /* 💎 Glassmorphic Component Cards */
     .glass-card {
         background: rgba(255, 255, 255, 0.03) !important;
         backdrop-filter: blur(16px) !important;
@@ -101,6 +110,11 @@ st.markdown("""
         border: none !important;
         font-weight: 600 !important;
         width: 100%;
+        transition: transform 0.1s ease;
+    }
+
+    .stButton>button:active {
+        transform: scale(0.98);
     }
 </style>
 """, unsafe_allow_html=True)
