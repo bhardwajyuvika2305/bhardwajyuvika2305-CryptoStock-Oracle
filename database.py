@@ -1,37 +1,54 @@
-import sqlite3
 import os
+import sqlite3
 
+# Determine if a cloud PostgreSQL or local SQLite environment is required
+# If you eventually use a cloud database, add DATABASE_URL to your deployment secrets.
+DATABASE_URL = os.getenv("DATABASE_URL")
 DB_FILE = "oracle_system.db"
 
 def get_db_connection():
-    """Generates an active thread-safe connection to the localized SQLite file."""
-    conn = sqlite3.connect(DB_FILE, check_same_thread=False)
-    return conn
+    """Generates an active thread-safe connection to the localized SQLite or external cloud instance."""
+    if DATABASE_URL:
+        try:
+            import psycopg2
+            return psycopg2.connect(DATABASE_URL, sslmode="require")
+        except ImportError:
+            raise ImportError("psycopg2-binary is missing from requirements.txt for cloud database support.")
+    else:
+        # Standard local standalone fallback
+        conn = sqlite3.connect(DB_FILE, check_same_thread=False)
+        return conn
 
 def init_db():
-    """Initializes the relational grid structures if the database file is clean/new."""
+    """Initializes the relational grid structures if the database layer is clean/new."""
     conn = get_db_connection()
     cursor = conn.cursor()
     
+    # Check dialect for parameter placeholders (? for SQLite, %s for Postgres)
+    placeholder = "%s" if DATABASE_URL else "?"
+    id_autoincrement = "SERIAL PRIMARY KEY" if DATABASE_URL else "INTEGER PRIMARY KEY AUTOINCREMENT"
+    text_type = "TEXT" if DATABASE_URL else "TEXT"
+    ts_default = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP" if DATABASE_URL else "DATETIME DEFAULT CURRENT_TIMESTAMP"
+
     # 👥 Secure User Core Entity Matrix Table
-    cursor.execute("""
+    cursor.execute(f"""
         CREATE TABLE IF NOT EXISTS users (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            username TEXT UNIQUE,
-            email TEXT,
-            password TEXT,
-            tier TEXT
+            id {id_autoincrement},
+            username {text_type} UNIQUE,
+            email {text_type},
+            password {text_type},
+            tier {text_type}
         )
     """)
     
     # 💬 User Experience Network Review Log Table
-    cursor.execute("""
+    cursor.execute(f"""
         CREATE TABLE IF NOT EXISTS feedback (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            username TEXT,
-            satisfied TEXT,
-            comment TEXT,
-            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+            id {id_autoincrement},
+            username {text_type},
+            satisfied {text_type},
+            comment {text_type},
+            timestamp {ts_default}
         )
     """)
     
@@ -42,7 +59,8 @@ def get_user(username):
     """Fetches a singular user record matching a designated Node ID handle."""
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT id, username, email, password, tier FROM users WHERE username = ?", (username,))
+    p = "%s" if DATABASE_URL else "?"
+    cursor.execute(f"SELECT id, username, email, password, tier FROM users WHERE username = {p}", (username,))
     user = cursor.fetchone()
     conn.close()
     return user
@@ -52,14 +70,16 @@ def insert_user(username, email, password, tier):
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
-        cursor.execute("INSERT INTO users (username, email, password, tier) VALUES (?, ?, ?, ?)", 
+        p = "%s" if DATABASE_URL else "?"
+        cursor.execute(f"INSERT INTO users (username, email, password, tier) VALUES ({p}, {p}, {p}, {p})", 
                        (username, email, password, tier))
         conn.commit()
         conn.close()
         return True, "Success"
-    except sqlite3.IntegrityError:
-        return False, "Node ID already registered."
     except Exception as e:
+        error_str = str(e).lower()
+        if "unique" in error_str or "integrity" in error_str:
+            return False, "Node ID already registered."
         return False, str(e)
 
 def insert_feedback(username, satisfied, comment):
@@ -67,7 +87,8 @@ def insert_feedback(username, satisfied, comment):
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
-        cursor.execute("INSERT INTO feedback (username, satisfied, comment) VALUES (?, ?, ?)", 
+        p = "%s" if DATABASE_URL else "?"
+        cursor.execute(f"INSERT INTO feedback (username, satisfied, comment) VALUES ({p}, {p}, {p})", 
                        (username, satisfied, comment))
         conn.commit()
         conn.close()
