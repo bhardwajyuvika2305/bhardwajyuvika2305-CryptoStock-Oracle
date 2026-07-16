@@ -60,6 +60,15 @@ st.markdown("""
         line-height: 1.6 !important;
         color: rgba(255, 255, 255, 0.9) !important;
     }
+    
+    /* Allow text to break elegantly onto two lines if the screen is narrow, without breaking alignment */
+    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {
+    white-space: normal !important; 
+    word-break: break-word !important;
+    font-size: 0.9rem !important;
+    line-height: 1.4 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    }
 
     /* Add hover animations to radio buttons for active user response */
     div[data-testid="stRadio"] label:hover {
@@ -244,15 +253,15 @@ st.sidebar.markdown("---")
 page_selection = st.sidebar.radio(
     "🧭 Navigation Matrix Panel",
     [
-        "📃 1. Project Manifesto & Core Rationale", 
-        "📊 2. Real-Time Microstructure Terminal", 
-        "🔮 3. Statistical Risk & Predictions",
-        "🌐 4. Macro-Sector Distribution Radar",
-        "📊 5. Exchange Liquidity Profile Maps",
-        "📈 6. Multi-Asset Cross Correlations",
-        "🧮 7. High-Performance Markowitz Frontier",
-        "💬 8. Live Network Feedback Space"
-        "🔑 9. Root Admin Audit Panel"
+        "📃 1. Project Manifesto", 
+        "📊 2. Microstructure Terminal", 
+        "🔮 3. Risk & Predictions",
+        "🌐 4. Macro-Sector Radar",
+        "📊 5. Liquidity Profile Maps",
+        "📈 6. Asset Cross Correlations",
+        "🧮 7. Markowitz Frontier",
+        "💬 8. Live Feedback Space",
+        "🔑 9. Root Admin Audit"  # Compact name ensures it fits on screen!
     ]
 )
 
@@ -719,11 +728,12 @@ elif page_selection == "💬 8. Live Network Feedback Space":
                     <small style="color:rgba(255,255,255,0.4);">Satisfied: {like}</small>
                 </div>
                 """, unsafe_allow_html=True)
+                
 # ==============================================================================
 # PAGE 9: ROOT ADMIN AUDIT PANEL
 # ==============================================================================
-elif page_selection == "🔑 9. Root Admin Audit Panel":
-    st.title("🔑 Oracle Terminal - Master Admin Directory")
+elif page_selection == "🔑 9. Root Admin Audit":  # Must match the new text exactly
+    st.markdown("<h1 class='glow-text'>🔑 Oracle Terminal - Master Admin Directory</h1>", unsafe_allow_html=True)
     st.caption("Authorized Node Operations Only")
 
     password_input = st.text_input("Enter Root Master Password", type="password")
@@ -731,7 +741,6 @@ elif page_selection == "🔑 9. Root Admin Audit Panel":
     if password_input == "oracleadmin2026":
         st.success("Root identity cleared! Extracting master user databases...")
         
-        # This will pull from the EXACT database file the cloud app is writing to
         from database import get_all_users
         users_data = get_all_users()
         
@@ -742,5 +751,7 @@ elif page_selection == "🔑 9. Root Admin Audit Panel":
         else:
             st.info("No system nodes registered in database currently.")
     else:
+        if password_input != "":
+            st.error("Access Denied: Admin verification pending.")
         if password_input != "":
             st.error("Access Denied: Admin verification pending.")
