@@ -656,7 +656,7 @@ elif "10. System Architect" in page_selection:
             <h3 style='color: #10b981; margin-top: 0px;'>🌐 Operational Contact Points</h3>
             <p>Explore source files, repositories, or connect across open-source channels:</p>
             <p>🐙 <b>GitHub Matrix:</b> <a href='https://github.com/bhardwajyuvika2305' target='_blank' style='color:#6366f1; text-decoration:none;'>github.com/bhardwajyuvika2305</a></p>
-            <p>🔗 <b>LinkedIn Portal:</b> <a href='https://www.linkedin.com' target='_blank' style='color:#6366f1; text-decoration:none;'>Connect via LinkedIn</a></p>
+            <p>🔗 <b>LinkedIn Portal:</b> <a href='www.linkedin.com/in/yuvika-bhardwaj2305' target='_blank' style='color:#6366f1; text-decoration:none;'>Connect via LinkedIn</a></p>
             <p>📧 <b>Secure Email Link:</b> <a href='mailto:bhardwajyuvika2305@gmail.com' style='color:#6366f1; text-decoration:none;'>bhardwajyuvika2305@gmail.com</a></p>
         </div>
         """, unsafe_allow_html=True)
