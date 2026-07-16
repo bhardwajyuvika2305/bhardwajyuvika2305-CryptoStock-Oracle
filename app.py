@@ -223,6 +223,7 @@ page_selection = st.sidebar.radio(
         "📈 6. Multi-Asset Cross Correlations",
         "🧮 7. High-Performance Markowitz Frontier",
         "💬 8. Live Network Feedback Space"
+        "🔑 9. Root Admin Audit Panel"
     ]
 )
 
@@ -689,3 +690,28 @@ elif page_selection == "💬 8. Live Network Feedback Space":
                     <small style="color:rgba(255,255,255,0.4);">Satisfied: {like}</small>
                 </div>
                 """, unsafe_allow_html=True)
+# ==============================================================================
+# PAGE 9: ROOT ADMIN AUDIT PANEL
+# ==============================================================================
+elif page_selection == "🔑 9. Root Admin Audit Panel":
+    st.title("🔑 Oracle Terminal - Master Admin Directory")
+    st.caption("Authorized Node Operations Only")
+
+    password_input = st.text_input("Enter Root Master Password", type="password")
+
+    if password_input == "oracleadmin2026":
+        st.success("Root identity cleared! Extracting master user databases...")
+        
+        # This will pull from the EXACT database file the cloud app is writing to
+        from database import get_all_users
+        users_data = get_all_users()
+        
+        if users_data:
+            df_users = pd.DataFrame(users_data, columns=["Database ID", "Username", "Email Address", "Hashed Password", "Account Access Tier"])
+            st.dataframe(df_users, use_container_width=True)
+            st.metric("Total Provisioned Users", len(df_users))
+        else:
+            st.info("No system nodes registered in database currently.")
+    else:
+        if password_input != "":
+            st.error("Access Denied: Admin verification pending.")
